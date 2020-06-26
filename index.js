@@ -52,7 +52,7 @@ app.post("/not",(req, res) => {
     var id = req.query.id;
 
     var filtro = {
-        "order.id": id
+        "order.id": ""+id
     }
 
     MercadoPago.payment.search({
