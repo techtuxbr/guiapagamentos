@@ -82,7 +82,7 @@ app.post("/not",(req, res) => {
         }).catch(err => {
             console.log(err);
         });            
-    },2500);
+    },25000);
 
     console.log("Respondeu");
     res.send("OK");
