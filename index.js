@@ -64,6 +64,10 @@ app.get("/pagar",async (req, res) => {
 });
 
 app.post("/not",(req, res) => {
+  
+    console.log(req.query);
+
+   /*
     var id = req.query.id;
 
     //"1548504759"
@@ -86,7 +90,7 @@ app.post("/not",(req, res) => {
       }).catch(function (error) {
         console.log(error);
       });
-
+      */
 
     /*
     var filtro = {
