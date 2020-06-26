@@ -9,7 +9,22 @@ MercadoPago.configure({
 
 
 app.get("/", (req, res) => {
-    res.send("Olá mundo!");
+
+    var filters = {
+        "order.id": "1548504759"
+      };
+    
+      console.log(filters);
+
+      MercadoPago.payment.search({
+        qs: filters
+      }).then(function (data) {
+        res.send(data);
+      }).catch(function (error) {
+        res.send(error);
+      });
+
+    
 });
 
 app.get("/pagar",async (req, res) => {
@@ -51,6 +66,28 @@ app.get("/pagar",async (req, res) => {
 app.post("/not",(req, res) => {
     var id = req.query.id;
 
+
+    var filters = {
+        "order.id": "1548504759"
+      };
+
+      var filtro = {
+        "order.id": ""+id
+    }
+    
+      console.log(filters);
+      console.log(filtro);
+
+      MercadoPago.payment.search({
+        qs: filters
+      }).then(function (data) {
+        console.log(data);
+      }).catch(function (error) {
+        console.log(error);
+      });
+
+
+    /*
     var filtro = {
         "order.id": ""+id
     }
@@ -64,6 +101,7 @@ app.post("/not",(req, res) => {
     }).catch(err => {
         console.log(err);
     });
+    */
 
     res.send("OK");
 });
