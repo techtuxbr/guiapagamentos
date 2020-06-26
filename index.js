@@ -55,6 +55,8 @@ app.post("/not",(req, res) => {
         "order.id": ""+id
     }
 
+    console.log(filtro);
+
     MercadoPago.payment.search({
         qs: filtro
     }).then(data => {
