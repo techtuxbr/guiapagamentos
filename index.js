@@ -64,50 +64,27 @@ app.get("/pagar",async (req, res) => {
 });
 
 app.post("/not",(req, res) => {
-  
-    console.log(req.query);
-
-   /*
     var id = req.query.id;
 
-    //"1548504759"
-    
-    var filters = {
-        "order.id": ""+id
-      };
-
-      var filtro = {
-        "order.id": ""+id
-    }
-    
-      console.log(filters);
-      console.log(filtro);
-
-      MercadoPago.payment.search({
-        qs: filters
-      }).then(function (data) {
-        console.log(data);
-      }).catch(function (error) {
-        console.log(error);
-      });
-      */
-
-    /*
     var filtro = {
         "order.id": ""+id
     }
 
     console.log(filtro);
 
-    MercadoPago.payment.search({
-        qs: filtro
-    }).then(data => {
-        console.log(data);
-    }).catch(err => {
-        console.log(err);
-    });
-    */
 
+    setTimeout(() => {
+        MercadoPago.payment.search({
+            qs: filtro
+        }).then(data => {
+            console.log(data);
+    
+        }).catch(err => {
+            console.log(err);
+        });            
+    },2500);
+
+    console.log("Respondeu");
     res.send("OK");
 });
 
