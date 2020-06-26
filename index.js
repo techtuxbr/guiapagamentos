@@ -66,9 +66,10 @@ app.get("/pagar",async (req, res) => {
 app.post("/not",(req, res) => {
     var id = req.query.id;
 
-
+    //"1548504759"
+    
     var filters = {
-        "order.id": "1548504759"
+        "order.id": ""+id
       };
 
       var filtro = {
