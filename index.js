@@ -1,5 +1,6 @@
 const express = require("express");
 const MercadoPago = require("mercadopago"); 
+const { setTimeout } = require("timers");
 const app = express();
 
 MercadoPago.configure({
@@ -10,14 +11,10 @@ MercadoPago.configure({
 
 app.get("/", (req, res) => {
 
-    var filters = {
-        "order.id": "1548504759"
-      };
-    
-      console.log(filters);
+
 
       MercadoPago.payment.search({
-        qs: filters
+        //qs: filters
       }).then(function (data) {
         res.send(data);
       }).catch(function (error) {
@@ -66,25 +63,22 @@ app.get("/pagar",async (req, res) => {
 app.post("/not",(req, res) => {
     var id = req.query.id;
 
-    var filtro = {
-        "order.id": ""+id
-    }
-
-    console.log(filtro);
-
-
     setTimeout(() => {
+
+        var filtro = {
+            "order.id": id
+        }
+
         MercadoPago.payment.search({
             qs: filtro
         }).then(data => {
             console.log(data);
-    
         }).catch(err => {
             console.log(err);
-        });            
-    },25000);
+        });
 
-    console.log("Respondeu");
+    },20000)
+
     res.send("OK");
 });
 
